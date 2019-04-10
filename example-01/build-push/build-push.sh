@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# hello-go-deploy-aws-elastic-beanstalk build-push.sh
+# hello-go-deploy-amazon-eks build-push.sh
 
 echo " "
 
@@ -35,11 +35,11 @@ cd build-push
 echo " "
 
 echo "Build your docker image from binary /bin/hello-go using /build-push/Dockerfile"
-docker build -t jeffdecola/hello-go-deploy-aws-elastic-beanstalk .
+docker build -t jeffdecola/hello-go-deploy-amazon-eks .
 echo " "
 
 echo "Assuming you are logged in, lets push your built docker image to DockerHub"
-docker push jeffdecola/hello-go-deploy-aws-elastic-beanstalk
+docker push jeffdecola/hello-go-deploy-amazon-eks
 echo " "
 
 echo "************************************************************************"

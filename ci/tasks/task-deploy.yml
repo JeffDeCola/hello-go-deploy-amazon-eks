@@ -1,4 +1,4 @@
-# hello-go-deploy-aws-elastic-beanstalk task-deploy.yml
+# hello-go-deploy-amazon-eks task-deploy.yml
 
 platform: linux
 
@@ -9,9 +9,9 @@ image_resource:
     tag: 1.11
 
 inputs:
-- name: hello-go-deploy-aws-elastic-beanstalk
+- name: hello-go-deploy-amazon-eks
 
 run:
-  path: ./hello-go-deploy-aws-elastic-beanstalk/ci/scripts/deploy.sh
+  path: ./hello-go-deploy-amazon-eks/ci/scripts/deploy.sh
   # args: [-debug]
 

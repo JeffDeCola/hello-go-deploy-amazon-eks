@@ -1,5 +1,5 @@
 #!/bin/sh -e
-# hello-go-deploy-aws-elastic-beanstalk run.sh
+# hello-go-deploy-amazon-eks run.sh
 
 echo " "
 

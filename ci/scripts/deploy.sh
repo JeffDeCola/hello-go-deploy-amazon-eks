@@ -1,5 +1,5 @@
 #!/bin/sh
-# hello-go-deploy-aws-elastic-beanstalk deploy.sh
+# hello-go-deploy-amazon-eks deploy.sh
 
 echo " "
 
@@ -18,7 +18,7 @@ else
 fi
 
 echo "At start, you should be in a /tmp/build/xxxxx directory with one folder:"
-echo "   /hello-go-deploy-aws-elastic-beanstalk"
+echo "   /hello-go-deploy-amazon-eks"
 echo " "
 
 echo "This is a placeholder"

@@ -1,5 +1,5 @@
 #!/bin/sh
-# hello-go-deploy-aws-elastic-beanstalk unit-test.sh
+# hello-go-deploy-amazon-eks unit-test.sh
 
 echo " "
 
@@ -17,13 +17,13 @@ else
     echo " "
 fi
 
-echo "The goal is to set up a go src/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk directory"
+echo "The goal is to set up a go src/github.com/JeffDeCola/hello-go-deploy-amazon-eks directory"
 echo "Then tests will be run in that directory"
 echo "Test coverage results, text_coverage.txt, will be moved to /coverage-results directory"
 echo " "
 
 echo "At start, you should be in a /tmp/build/xxxxx directory with two folders:"
-echo "   /hello-go-deploy-aws-elastic-beanstalk"
+echo "   /hello-go-deploy-amazon-eks"
 echo "   /coverage-results (created in task-unit-test.yml task file)"
 echo " "
 
@@ -42,12 +42,12 @@ echo "mkdir -p $GOPATH/src/github.com/JeffDeCola/"
 mkdir -p "$GOPATH/src/github.com/JeffDeCola/"
 echo " "
 
-echo "cp -R ./hello-go-deploy-aws-elastic-beanstalk $GOPATH/src/github.com/JeffDeCola/."
-cp -R "./hello-go-deploy-aws-elastic-beanstalk" "$GOPATH/src/github.com/JeffDeCola/."
+echo "cp -R ./hello-go-deploy-amazon-eks $GOPATH/src/github.com/JeffDeCola/."
+cp -R "./hello-go-deploy-amazon-eks" "$GOPATH/src/github.com/JeffDeCola/."
 echo " "
 
-echo "cd $GOPATH/src/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/example-01"
-cd "$GOPATH/src/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/example-01"
+echo "cd $GOPATH/src/github.com/JeffDeCola/hello-go-deploy-amazon-eks/example-01"
+cd "$GOPATH/src/github.com/JeffDeCola/hello-go-deploy-amazon-eks/example-01"
 echo " "
 
 echo "Check that you are set and everything is in the right place for go:"

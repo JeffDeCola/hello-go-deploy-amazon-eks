@@ -1,4 +1,4 @@
-// hello-go-deploy-aws-elastic-beanstalk main.go
+// hello-go-deploy-amazon-eks main.go
 
 package main
 
