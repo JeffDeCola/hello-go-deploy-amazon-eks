@@ -54,7 +54,7 @@ To push a docker image you will need,
 
 To deploy to `amazon eks` you will need,
 
-* [amazon elastic container service for kubernetes (eks)](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/service-architectures/platform-as-a-service/amazon-elastic-container-service-for-kubernetes-cheat-sheet)
+* [amazon elastic container service for kubernetes (eks)](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/service-architectures/containers-as-a-service/amazon-elastic-container-service-for-kubernetes-cheat-sheet)
 
 As a bonus, you can use Concourse CI to run the scripts,
 
