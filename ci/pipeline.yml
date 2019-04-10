@@ -1,88 +1,88 @@
-# hello-go-deploy-aws-elastic-beanstalk pipeline.yml
+# hello-go-deploy-amazon-eks pipeline.yml
 
 jobs:
 
 - name: job-readme-github-pages
   plan:
-  - get: hello-go-deploy-aws-elastic-beanstalk
+  - get: hello-go-deploy-amazon-eks
     trigger: true
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
-      text: "From hello-go-deploy-aws-elastic-beanstalk: STARTED job-readme-github-pages in concourse ci."
+      text: "From hello-go-deploy-amazon-eks: STARTED job-readme-github-pages in concourse ci."
   - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+    params: { state: "pending", description: "STARTED job-readme-github-pages in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
   - task: task-readme-github-pages
-    file: hello-go-deploy-aws-elastic-beanstalk/ci/tasks/task-readme-github-pages.yml
+    file: hello-go-deploy-amazon-eks/ci/tasks/task-readme-github-pages.yml
     on_success:
       do:
-      - put: hello-go-deploy-aws-elastic-beanstalk
+      - put: hello-go-deploy-amazon-eks
         params:
-          repository: hello-go-deploy-aws-elastic-beanstalk-updated  
+          repository: hello-go-deploy-amazon-eks-updated  
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From hello-go-deploy-aws-elastic-beanstalk: PASSED job-readme-github-pages in concourse ci."
+          text: "From hello-go-deploy-amazon-eks: PASSED job-readme-github-pages in concourse ci."
       - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+        params: { state: "success", description: "PASSED job-readme-github-pages in concourse ci", commit: "hello-go-deploy-amazon-eks" }
     on_failure:
       do:
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From hello-go-deploy-aws-elastic-beanstalk: FAILED job-readme-github-pages in concourse ci."
+          text: "From hello-go-deploy-amazon-eks: FAILED job-readme-github-pages in concourse ci."
       - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+        params: { state: "failure", description: "FAILED job-readme-github-pages in concourse ci", commit: "hello-go-deploy-amazon-eks" }
 
 - name: job-unit-tests
   plan:
-  - get: hello-go-deploy-aws-elastic-beanstalk
+  - get: hello-go-deploy-amazon-eks
     trigger: true
     passed: [job-readme-github-pages]
   - put: resource-slack-alert
     params:
       channel: '#jeff-builds'
-      text: "From hello-go-deploy-aws-elastic-beanstalk: STARTED job-unit-tests in concourse ci."
+      text: "From hello-go-deploy-amazon-eks: STARTED job-unit-tests in concourse ci."
   - put: resource-repo-status
-    params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+    params: { state: "pending", description: "STARTED job-unit-tests in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
   - task: task-unit-tests
-    file: hello-go-deploy-aws-elastic-beanstalk/ci/tasks/task-unit-tests.yml
+    file: hello-go-deploy-amazon-eks/ci/tasks/task-unit-tests.yml
     on_success:
       do:
-      - put: hello-go-deploy-aws-elastic-beanstalk
+      - put: hello-go-deploy-amazon-eks
         params:
-          repository: hello-go-deploy-aws-elastic-beanstalk  
+          repository: hello-go-deploy-amazon-eks  
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
           text_file: coverage-results/test_coverage.txt
           text: |
-            From hello-go-deploy-aws-elastic-beanstalk: PASSED job-unit-tests in concourse ci. 
+            From hello-go-deploy-amazon-eks: PASSED job-unit-tests in concourse ci. 
             $TEXT_FILE_CONTENT
       - put: resource-repo-status
-        params: { state: "success", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+        params: { state: "success", description: "PASSED job-unit-tests in concourse ci", commit: "hello-go-deploy-amazon-eks" }
     on_failure:
       do:
       - put: resource-slack-alert
         params:
           channel: '#jeff-builds'
-          text: "From hello-go-deploy-aws-elastic-beanstalk: FAILED job-unit-tests in concourse ci."
+          text: "From hello-go-deploy-amazon-eks: FAILED job-unit-tests in concourse ci."
       - put: resource-repo-status
-        params: { state: "failure", description: "FAILED job-unit-tests in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+        params: { state: "failure", description: "FAILED job-unit-tests in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
 
 - name: job-build-push
   plan:
-    - get: hello-go-deploy-aws-elastic-beanstalk
+    - get: hello-go-deploy-amazon-eks
       trigger: true
       passed: [job-unit-tests]
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
-        text: "From hello-go-deploy-aws-elastic-beanstalk: STARTED job-build-push in concourse ci."
+        text: "From hello-go-deploy-amazon-eks: STARTED job-build-push in concourse ci."
     - put: resource-repo-status
-      params: { state: "pending", description: "STARTED job-build-push in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+      params: { state: "pending", description: "STARTED job-build-push in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
     - task: task-build-push
-      file: hello-go-deploy-aws-elastic-beanstalk/ci/tasks/task-build-push.yml
+      file: hello-go-deploy-amazon-eks/ci/tasks/task-build-push.yml
     - put: resource-dump-to-dockerhub
       params: { build: "dist"}
       on_success:
@@ -90,47 +90,47 @@ jobs:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
-            text: "From hello-go-deploy-aws-elastic-beanstalk: PASSED job-build-push in concourse ci."
+            text: "From hello-go-deploy-amazon-eks: PASSED job-build-push in concourse ci."
         - put: resource-repo-status
-          params: { state: "pending", description: "PASSED job-build-push in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+          params: { state: "pending", description: "PASSED job-build-push in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
       on_failure:
         do:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
-            text: "From hello-go-deploy-aws-elastic-beanstalk: FAILED job-build-push in concourse ci."
+            text: "From hello-go-deploy-amazon-eks: FAILED job-build-push in concourse ci."
         - put: resource-repo-status
-          params: { state: "failure", description: "FAILED job-build-push in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+          params: { state: "failure", description: "FAILED job-build-push in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
 
 - name: job-deploy
   plan:
-    - get: hello-go-deploy-aws-elastic-beanstalk
+    - get: hello-go-deploy-amazon-eks
       trigger: true
       passed: [job-build-push]
     - put: resource-slack-alert
       params:
         channel: '#jeff-builds'
-        text: "From hello-go-deploy-aws-elastic-beanstalk: STARTED job-deploy in concourse ci."
+        text: "From hello-go-deploy-amazon-eks: STARTED job-deploy in concourse ci."
     - put: resource-repo-status
-      params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+      params: { state: "pending", description: "STARTED job-deploy in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
     - task: task-deploy
-      file: hello-go-deploy-aws-elastic-beanstalk/ci/tasks/task-deploy.yml
+      file: hello-go-deploy-amazon-eks/ci/tasks/task-deploy.yml
       on_success:
         do:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
-            text: "From hello-go-deploy-aws-elastic-beanstalk: PASSED job-deploy in concourse ci."
+            text: "From hello-go-deploy-amazon-eks: PASSED job-deploy in concourse ci."
         - put: resource-repo-status
-          params: { state: "success", description: "PASSED job-deploy in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+          params: { state: "success", description: "PASSED job-deploy in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
       on_failure:
         do:
         - put: resource-slack-alert
           params:
             channel: '#jeff-builds'
-            text: "From hello-go-deploy-aws-elastic-beanstalk: FAILED job-deploy in concourse ci."
+            text: "From hello-go-deploy-amazon-eks: FAILED job-deploy in concourse ci."
         - put: resource-repo-status
-          params: { state: "failure", description: "FAILED job-deploy in concourse ci.", commit: "hello-go-deploy-aws-elastic-beanstalk" }
+          params: { state: "failure", description: "FAILED job-deploy in concourse ci.", commit: "hello-go-deploy-amazon-eks" }
 
 resource_types:
 
@@ -147,17 +147,17 @@ resource_types:
 
 resources:
 
-- name: hello-go-deploy-aws-elastic-beanstalk
+- name: hello-go-deploy-amazon-eks
   type: git
   source:
-    #uri: https://github.com/jeffdecola/hello-go-deploy-aws-elastic-beanstalk
-    uri: git@github.com:jeffdecola/hello-go-deploy-aws-elastic-beanstalk.git
+    #uri: https://github.com/jeffdecola/hello-go-deploy-amazon-eks
+    uri: git@github.com:jeffdecola/hello-go-deploy-amazon-eks.git
     branch: master
     private_key: {{git_private_key}}
 - name: resource-dump-to-dockerhub
   type: docker-image
   source:
-    repository: jeffdecola/hello-go-deploy-aws-elastic-beanstalk
+    repository: jeffdecola/hello-go-deploy-amazon-eks
     tag: latest
     username: jeffdecola
     password: {{dockerhub_password}}
@@ -168,6 +168,6 @@ resources:
 - name: resource-repo-status 
   type: github-status
   source:
-    repository: jeffdecola/hello-go-deploy-aws-elastic-beanstalk 
+    repository: jeffdecola/hello-go-deploy-amazon-eks 
     access_token: {{repo_github_token}}
     

@@ -1,22 +1,23 @@
-# hello-go-deploy-aws-elastic-beanstalk
+# hello-go-deploy-amazon-eks
 
 ```text
 *** THE DEPLOY IS UNDER CONSTRUCTION - CHECK BACK SOON ***
 ```
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)](https://goreportcard.com/report/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)
-[![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ce328e08ef7038607b16/maintainability)](https://codeclimate.com/github/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/maintainability)
-[![Issue Count](https://codeclimate.com/github/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/issues)
+[![Go Report Card](https://goreportcard.com/badge/github.com/JeffDeCola/hello-go-deploy-amazon-eks)](https://goreportcard.com/report/github.com/JeffDeCola/hello-go-deploy-amazon-eks)
+[![GoDoc](https://godoc.org/github.com/JeffDeCola/hello-go-deploy-amazon-eks?status.svg)](https://godoc.org/github.com/JeffDeCola/hello-go-deploy-amazon-eks)
+[![Maintainability](https://api.codeclimate.com/v1/badges/83f6103f1545cd05acde/maintainability)](https://codeclimate.com/github/JeffDeCola/hello-go-deploy-amazon-eks/maintainability)
+[![Issue Count](https://codeclimate.com/github/JeffDeCola/hello-go-deploy-amazon-eks/badges/issue_count.svg)](https://codeclimate.com/github/JeffDeCola/hello-go-deploy-amazon-eks/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://jeffdecola.mit-license.org)
 
-`hello-go-deploy-aws-elastic-beanstalk` _will test, build, push (to DockerHub)
-and deploy a long running "hello-world" Docker Image to AWS Elastic Beanstalk._
+`hello-go-deploy-amazon-eks` _will test, build, push (to DockerHub)
+and deploy a long running "hello-world" Docker Image to
+Amazon Elastic Container Service for Kubernetes (eks)._
 
 I also have other repos showing different deployments,
 
 * PaaS
-  * [hello-go-deploy-aws-elastic-beanstalk](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)
+  * [hello-go-deploy-amazon-eks](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks)
   * [hello-go-deploy-azure-app-service](https://github.com/JeffDeCola/hello-go-deploy-azure-app-service)
   * [hello-go-deploy-gae](https://github.com/JeffDeCola/hello-go-deploy-gae)
   * [hello-go-deploy-marathon](https://github.com/JeffDeCola/hello-go-deploy-marathon)
@@ -26,16 +27,16 @@ I also have other repos showing different deployments,
   * [hello-go-deploy-aks](https://github.com/JeffDeCola/hello-go-deploy-aks)
   * [hello-go-deploy-gke](https://github.com/JeffDeCola/hello-go-deploy-gke)
 * IaaS
-  * [hello-go-deploy-aws-elastic-beanstalk](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)
+  * [hello-go-deploy-amazon-eks](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks)
   * [hello-go-deploy-azure-vm](https://github.com/JeffDeCola/hello-go-deploy-azure-vm)
   * [hello-go-deploy-gce](https://github.com/JeffDeCola/hello-go-deploy-gce)
 
-The `hello-go-deploy-aws-elastic-beanstalk`
-[Docker Image](https://hub.docker.com/r/jeffdecola/hello-go-deploy-aws-elastic-beanstalk)
+The `hello-go-deploy-amazon-eks`
+[Docker Image](https://hub.docker.com/r/jeffdecola/hello-go-deploy-amazon-eks)
 on DockerHub.
 
-The `hello-go-deploy-aws-elastic-beanstalk`
-[GitHub Webpage](https://jeffdecola.github.io/hello-go-deploy-aws-elastic-beanstalk/).
+The `hello-go-deploy-amazon-eks`
+[GitHub Webpage](https://jeffdecola.github.io/hello-go-deploy-amazon-eks/).
 
 ## PREREQUISITES
 
@@ -51,9 +52,9 @@ To push a docker image you will need,
 
 * [DockerHub account](https://hub.docker.com/)
 
-To deploy to `aws elastic beanstalk` you will need,
+To deploy to `amazon eks` you will need,
 
-* [aws elastic beanstalk](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/service-architectures/platform-as-a-service/aws-elastic-beanstalk-cheat-sheet)
+* [amazon elastic container service for kubernetes (eks)](https://github.com/JeffDeCola/my-cheat-sheets/tree/master/software/service-architectures/platform-as-a-service/amazon-elastic-container-service-for-kubernetes-cheat-sheet)
 
 As a bonus, you can use Concourse CI to run the scripts,
 
@@ -72,7 +73,7 @@ To run from the command line,
 go run main.go
 ```
 
-Every 2 seconds `hello-go-deploy-aws-elastic-beanstalk` will print:
+Every 2 seconds `hello-go-deploy-amazon-eks` will print:
 
 ```bash
 Hello everyone, count is: 1
@@ -116,7 +117,7 @@ Build your docker image from binary `hello-go`
 using `Dockerfile`,
 
 ```bash
-docker build -t jeffdecola/hello-go-deploy-aws-elastic-beanstalk .
+docker build -t jeffdecola/hello-go-deploy-amazon-eks .
 ```
 
 Obviously, replace `jeffdecola` with your DockerHub username.
@@ -127,12 +128,12 @@ Check your docker images on your machine,
 docker images
 ```
 
-It will be listed as `jeffdecola/hello-go-deploy-aws-elastic-beanstalk`
+It will be listed as `jeffdecola/hello-go-deploy-amazon-eks`
 
 You can test your dockerhub image,
 
 ```bash
-docker run jeffdecola/hello-go-deploy-aws-elastic-beanstalk
+docker run jeffdecola/hello-go-deploy-amazon-eks
 ```
 
 There is a `build-push.sh` script to build and push to DockerHub.
@@ -152,11 +153,11 @@ docker login
 Once logged in you can push to DockerHub
 
 ```bash
-docker push jeffdecola/hello-go-deploy-aws-elastic-beanstalk
+docker push jeffdecola/hello-go-deploy-amazon-eks
 ```
 
 Check you image at DockerHub. My image is located
-[https://hub.docker.com/r/jeffdecola/hello-go-deploy-aws-elastic-beanstalk](https://hub.docker.com/r/jeffdecola/hello-go-deploy-aws-elastic-beanstalk).
+[https://hub.docker.com/r/jeffdecola/hello-go-deploy-amazon-eks](https://hub.docker.com/r/jeffdecola/hello-go-deploy-amazon-eks).
 
 There is a `build-push.sh` script to build and push to DockerHub.
 There is also a script in the /ci folder to build and push
@@ -170,25 +171,25 @@ tbd
 
 For fun, I use concourse to automate the above steps.
 
-A pipeline file [pipeline.yml](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/tree/master/ci/pipeline.yml)
+A pipeline file [pipeline.yml](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks/tree/master/ci/pipeline.yml)
 shows the entire ci flow. Visually, it looks like,
 
-![IMAGE - hello-go-deploy-aws-elastic-beanstalk concourse ci pipeline - IMAGE](docs/pics/hello-go-deploy-aws-elastic-beanstalk-pipeline.jpg)
+![IMAGE - hello-go-deploy-amazon-eks concourse ci pipeline - IMAGE](docs/pics/hello-go-deploy-amazon-eks-pipeline.jpg)
 
 The `jobs` and `tasks` are,
 
 * `job-readme-github-pages` runs task
-  [readme-github-pages.sh](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/tree/master/ci/scripts/readme-github-pages.sh).
+  [readme-github-pages.sh](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks/tree/master/ci/scripts/readme-github-pages.sh).
 * `job-unit-tests` runs task
-  [unit-tests.sh](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/tree/master/ci/scripts/unit-tests.sh).
+  [unit-tests.sh](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks/tree/master/ci/scripts/unit-tests.sh).
 * `job-build-push` runs task
-  [build-push.sh](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/tree/master/ci/scripts/build-push.sh).
+  [build-push.sh](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks/tree/master/ci/scripts/build-push.sh).
 * `job-deploy` runs task
-  [deploy.sh](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk/tree/master/ci/scripts/deploy.sh).
+  [deploy.sh](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks/tree/master/ci/scripts/deploy.sh).
 
 The concourse `resources type` are,
 
-* `hello-go-deploy-aws-elastic-beanstalk` uses a resource type
+* `hello-go-deploy-amazon-eks` uses a resource type
   [docker-image](https://hub.docker.com/r/concourse/git-resource/)
   to PULL a repo from github.
 * `resource-dump-to-dockerhub` uses a resource type

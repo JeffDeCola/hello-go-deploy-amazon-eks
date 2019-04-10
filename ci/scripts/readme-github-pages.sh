@@ -1,5 +1,5 @@
 #!/bin/sh
-# hello-go-deploy-aws-elastic-beanstalk readme-github-pages.sh
+# hello-go-deploy-amazon-eks readme-github-pages.sh
 
 echo " "
 
@@ -17,14 +17,14 @@ else
     echo " "
 fi
 
-echo "The goal is to git clone /hello-go-deploy-aws-elastic-beanstalk to /hello-go-deploy-aws-elastic-beanstalk-updated"
+echo "The goal is to git clone /hello-go-deploy-amazon-eks to /hello-go-deploy-amazon-eks-updated"
 echo "Then script will edit the /docs/_includes/README.md for GITHUB WEBPAGES"
 echo "Finally push the changes in /docs/_includes/README.md to github"
 echo " "
 
 echo "At start, you should be in a /tmp/build/xxxxx directory with two folders:"
-echo "   /hello-go-deploy-aws-elastic-beanstalk"
-echo "   /hello-go-deploy-aws-elastic-beanstalk-updated (created in task-build-push.yml task file)"
+echo "   /hello-go-deploy-amazon-eks"
+echo "   /hello-go-deploy-amazon-eks-updated (created in task-build-push.yml task file)"
 echo " "
 
 echo "pwd is: $PWD"
@@ -34,12 +34,12 @@ echo "List whats in the current directory"
 ls -la
 echo " "
 
-echo "git clone hello-go-deploy-aws-elastic-beanstalk to hello-go-deploy-aws-elastic-beanstalk-updated"
-git clone hello-go-deploy-aws-elastic-beanstalk hello-go-deploy-aws-elastic-beanstalk-updated
+echo "git clone hello-go-deploy-amazon-eks to hello-go-deploy-amazon-eks-updated"
+git clone hello-go-deploy-amazon-eks hello-go-deploy-amazon-eks-updated
 echo " "
 
-echo "cd hello-go-deploy-aws-elastic-beanstalk-updated"
-cd hello-go-deploy-aws-elastic-beanstalk-updated
+echo "cd hello-go-deploy-amazon-eks-updated"
+cd hello-go-deploy-amazon-eks-updated
 echo " "
 
 echo "List whats in the current directory"

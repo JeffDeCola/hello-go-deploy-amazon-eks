@@ -1,4 +1,4 @@
 #!/bin/bash
-# hello-go-deploy-aws-elastic-beanstalk destroy-pipeline.sh
+# hello-go-deploy-amazon-eks destroy-pipeline.sh
 
-fly -t ci destroy-pipeline --pipeline hello-go-deploy-aws-elastic-beanstalk
+fly -t ci destroy-pipeline --pipeline hello-go-deploy-amazon-eks

@@ -1,8 +1,8 @@
-# hello-go-deploy-aws-elastic-beanstalk Dockerfile used to build docker image
+# hello-go-deploy-amazon-eks Dockerfile used to build docker image
 
 FROM alpine
 
-LABEL Jeff DeCola (https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)
+LABEL Jeff DeCola (https://github.com/JeffDeCola/hello-go-deploy-amazon-eks)
 
 # Put the binary into the container
 COPY hello-go /
