@@ -17,7 +17,7 @@ Amazon Elastic Container Service for Kubernetes (eks)._
 I also have other repos showing different deployments,
 
 * PaaS
-  * [hello-go-deploy-amazon-eks](https://github.com/JeffDeCola/hello-go-deploy-amazon-eks)
+  * [hello-go-deploy-amazon-aws-elastic-beanstalk](https://github.com/JeffDeCola/hello-go-deploy-aws-elastic-beanstalk)
   * [hello-go-deploy-azure-app-service](https://github.com/JeffDeCola/hello-go-deploy-azure-app-service)
   * [hello-go-deploy-gae](https://github.com/JeffDeCola/hello-go-deploy-gae)
   * [hello-go-deploy-marathon](https://github.com/JeffDeCola/hello-go-deploy-marathon)
